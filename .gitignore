@@ -9,3 +9,7 @@ out/
 
 # Dotenv file
 .env
+
+# Sysem files
+.idea/*
+.DS_Store
