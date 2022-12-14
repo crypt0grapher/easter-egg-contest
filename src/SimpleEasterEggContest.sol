@@ -18,7 +18,7 @@ contract EasterEggContest {
     string private constant MasterKey4 = CENSORED;
 
     /// @notice  Mystery Key
-    string private constant MysteryKey = CENSORED;
+    string private constant MysteryKey = "50";
 
     /// @notice This is the main and only function to interact with the smart contract
     /// @param _user The user address, not necessarily the caller
