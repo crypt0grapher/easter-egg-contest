@@ -29,9 +29,10 @@ contract EasterEggContest {
             // Hints given, probably with revert('hint text') to avoid gas cost
             revert("you'll get a hint");
             // next we check if the input data is the master key by concatenation of Key1 + key2 + key3 + key4
-        } else if (_inputData == string.concat((MasterKey1, MasterKey2, MasterKey3, MasterKey4)) {
+        } else if (_inputData == string.concat(MasterKey1, MasterKey2, MasterKey3, MasterKey4)) {
             // now the key is correct but this works only if the max allocation is not reached
             if (whitelistedCounter < easterEggWhitelistSpotMaxAllocation) {
+                //whitelisting the user
                 whitelist[_user] = true;
                 whitelistedCounter++;
             } else {
