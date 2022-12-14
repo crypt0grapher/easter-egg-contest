@@ -2,8 +2,8 @@
 pragma solidity ^0.8.17;
 
 contract EasterEggContest {
-    string public easterEggReward;
-    uint256 public easterEggWhitelistSpotMaxAllocation;
+    string public constant easterEggReward =  "City Pass Whitelist spot";
+    uint256 public constant easterEggWhitelistSpotMaxAllocation = 200;
 
     mapping(address => bool) public whitelist;
     uint256 public whitelistedCounter;
@@ -12,27 +12,13 @@ contract EasterEggContest {
     mapping(address => bool) public mysteryRole;
 
     /// @notice Master Key
-    string private MasterKey1;
-    string private MasterKey2;
-    string private MasterKey3;
-    string private MasterKey4;
+    string private constant MasterKey1 = CENSORED;
+    string private constant MasterKey2 = CENSORED;
+    string private constant MasterKey3 = CENSORED;
+    string private constant MasterKey4 = CENSORED;
 
     /// @notice  Mystery Key
-    string private MysteryKey;
-
-    /// @notice This is the constructor called on the contract deployment, it initialized smart contract variables
-    /// @dev this is how the  master key is formed before passing to the constructor
-    constructor() {
-        easterEggReward = "City Pass Whitelist spot";
-        easterEggWhitelistSpotMaxAllocation = 200;
-
-        MasterKey1 = CENSORED;
-        MasterKey2 = CENSORED;
-        MasterKey3 = CENSORED;
-        MasterKey4 = CENSORED;
-
-        MysteryKey = CENSORED;
-    }
+    string private constant MysteryKey = CENSORED;
 
     /// @notice This is the main and only function to interact with the smart contract
     /// @param _user The user address, not necessarily the caller
@@ -41,7 +27,7 @@ contract EasterEggContest {
     {
         if (_inputData == "HINTS") {
             // Hints given, probably with revert('hint text') to avoid gas cost
-            revert("this is a hint");
+            revert("you'll get a hint");
             // next we check if the input data is the master key by concatenation of Key1 + key2 + key3 + key4
         } else if (_inputData == string.concat((MasterKey1, MasterKey2, MasterKey3, MasterKey4)) {
             // now the key is correct but this works only if the max allocation is not reached
@@ -59,4 +45,5 @@ contract EasterEggContest {
             revert("Wrong key");
         }
     }
+   
 }
