@@ -2,7 +2,6 @@
 pragma solidity ^0.8.17;
 
 contract EasterEggContest {
-    bool public easterEggContestActivated;
     string public easterEggReward;
     uint256 public easterEggWhitelistSpotMaxAllocation;
 
@@ -24,7 +23,6 @@ contract EasterEggContest {
     /// @notice This is the constructor called on the contract deployment, it initialized smart contract variables
     /// @dev this is how the  master key is formed before passing to the constructor
     constructor() {
-        easterEggContestActivated = true;
         easterEggReward = "City Pass Whitelist spot";
         easterEggWhitelistSpotMaxAllocation = 200;
 
@@ -41,7 +39,6 @@ contract EasterEggContest {
     /// @param _inputData either master key, mystery key, or HINTS
     function message(address _user, string calldata _inputData) public
     {
-        require(easterEggContestActivated, "EasterEggContest: Easter Egg Contest should be activated");
         if (_inputData == "HINTS") {
             // Hints given, probably with revert('hint text') to avoid gas cost
             revert("this is a hint");
