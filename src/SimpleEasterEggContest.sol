@@ -17,9 +17,6 @@ contract EasterEggContest {
     string private constant MasterKey3 = CENSORED;
     string private constant MasterKey4 = CENSORED;
 
-    /// @notice  Mystery Key
-    string private constant MysteryKey = "50";
-
     /// @notice This is the main and only function to interact with the smart contract
     /// @param _user The user address, not necessarily the caller
     /// @param _inputData either master key, mystery key, or HINTS
@@ -39,7 +36,7 @@ contract EasterEggContest {
                 revert("Max allocation reached");
             }
             // next, if the input data is not the HINTS and not the master key, we check if it is the mystery key
-        } else if (_inputData == MysteryKey) {
+        } else if (_inputData == address(this).code.length) {
             mysteryRole[_user] = true;
         } else {
             // not HINTS, not master key, not mystery key, so we revert
